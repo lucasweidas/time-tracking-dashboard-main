@@ -1,0 +1,3 @@
+Quando o usuário clicar nos três pontinhos, irá aparecer as três opções: daily, weekly e monthly.
+
+Quando o usuário clicar no card, todos os outros cards irão sumir, e somente o clicado permanecerá e ocupará todo o espaço que os outros cards ocupavam. Quando isso acontecer, o card irá expandir e vai aparecer as três informações que cada card possui, que são: daily, weekly e monthly. Na versão de desktop, eles irão aparecer um ao lado do outro. Na versão de celular, um abaixo do outro. Ao lado dos três pontinhos, quando o cartão estiver expandido, terá um botão "X" para voltar recolher o card e voltar a forma original.
