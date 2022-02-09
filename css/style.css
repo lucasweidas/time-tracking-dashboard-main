@@ -23,6 +23,7 @@
     --clr-desaturated-blue: hsl(235, 45%, 61%);
     --clr-pale-blue: hsl(236, 100%, 87%);
     --clr-white: hsl(0, 0%, 100%);
+    --clr-card-hove: hsl(236, 41%, 34%);
 
     --font-default: 'Rubik', sans-serif;
     --font-size-cards: 18px;
@@ -78,7 +79,14 @@ button:focus-within {
 }
 
 .hero-track > .hero-card {
+    height: 100%;
     padding: clamp(1rem, 6vw, 2rem) clamp(1rem, 6vw, 1.75rem);
+    transition: background-color 200ms ease;
+}
+
+.hero-track:hover > .hero-card,
+.hero-track:focus-within > .hero-card {
+    background-color: var(--clr-card-hove);
 }
 
 /************************************************/
@@ -134,6 +142,10 @@ button:focus-within {
     padding: clamp(1rem, 6vw, 1.75rem) clamp(1rem, 6vw, 1.75rem);
 }
 
+.tab__btn.active {
+    color: var(--clr-white);
+}
+
 /* Track Header Container */
 .track-hdr {
     display: flex;
@@ -157,23 +169,32 @@ button:focus-within {
     display: none;
 }
 
-.track-tab {
+.track-hdr__btn.active > .fa-ellipsis {
+    display: none;
+}
+
+.track-hdr__btn.active > .fa-xmark {
+    display: block;
+}
+
+.menu {
     display: none;
     flex-direction: column;
     row-gap: 0.313rem;
     position: absolute;
-    top: -10px;
+    /* top: -10px; */
+    top: -55px;
     right: 30px;
-    background-color: hsl(246, 80%, 60%, 0.5);
+    background-color: hsl(246, 80%, 60%, 0.9);
     border-radius: var(--radius);
     padding: 0.5rem;
 }
 
-.track-tab.open {
+.track-hdr__btn.active ~ .menu {
     display: flex;
 }
 
-.track-tab__btn {
+.menu__btn {
     width: 100%;
     text-align: start;
     color: var(--clr-pale-blue);
@@ -185,7 +206,7 @@ button:focus-within {
     justify-content: space-between;
     align-items: center;
     row-gap: 1rem;
-    margin-top: clamp(0.5rem, 2vw, 2rem);
+    margin-top: clamp(0.5rem, 2vw, 1.5rem);
 }
 
 .time__curr {
@@ -197,6 +218,7 @@ button:focus-within {
 .time__prev {
     font-size: clamp(0.75rem, 3vw, 1rem);
     color: var(--clr-pale-blue);
+    text-transform: capitalize;
 }
 
 /* Work Card */
@@ -237,6 +259,7 @@ button:focus-within {
 
 #exercise::before {
     content: url('../images/icon-exercise.svg');
+    top: 0;
 }
 
 /* Social Card */
@@ -262,8 +285,10 @@ button:focus-within {
 /************************************************/
 /* Footer Container */
 .attribution {
-    font-size: clamp(0.75rem, 4vw, 1rem);
     color: var(--clr-desaturated-blue);
+    font-size: clamp(0.75rem, 4vw, 1rem);
+    text-align: center;
+    line-height: 1.8em;
 }
 
 .attribution > a {
@@ -289,6 +314,11 @@ button:focus-within {
         flex-direction: column;
         align-items: flex-start;
         row-gap: 1rem;
+    }
+
+    .time {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
@@ -317,6 +347,7 @@ button:focus-within {
     }
 
     #user-info {
+        height: 355px;
         flex-direction: column;
         align-items: flex-start;
     }
@@ -333,6 +364,8 @@ button:focus-within {
 
 @media (min-width: 1020px) {
     #main-container {
+        max-width: 1110px;
+        height: clamp(1px, 100vh, 520px);
         grid-template-columns: repeat(4, 1fr);
         grid-template-areas: 'user work play study' 'user exercise social self-care';
     }
