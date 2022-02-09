@@ -22,23 +22,320 @@
     --clr-dark-blue: hsl(235, 46%, 20%);
     --clr-desaturated-blue: hsl(235, 45%, 61%);
     --clr-pale-blue: hsl(236, 100%, 87%);
+    --clr-white: hsl(0, 0%, 100%);
 
     --font-default: 'Rubik', sans-serif;
     --font-size-cards: 18px;
+
+    --radius: 10px;
 }
 
 /************************************************/
 /* General Styles */
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
     min-height: 100vh;
     font-family: var(--font-default);
     background-color: var(--clr-very-dark-blue);
+    padding: 1.5rem;
+}
+
+.hero-card {
+    background-color: var(--clr-dark-blue);
+    border-radius: var(--radius);
+    position: relative;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 1.125rem;
+    color: var(--clr-desaturated-blue);
+    transition: color 200ms ease;
+}
+
+button:hover,
+button:focus-within {
+    color: var(--clr-white);
+}
+
+.hero-track {
+    border-radius: var(--radius);
+    padding-top: clamp(2.375rem, 7vw, 2.875rem);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-track::before {
+    position: absolute;
+    top: -10px;
+    right: 15px;
+}
+
+.hero-track > .hero-card {
+    padding: clamp(1rem, 6vw, 2rem) clamp(1rem, 6vw, 1.75rem);
 }
 
 /************************************************/
 /* Main Container */
-#main-c {
-    
+#main-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    gap: clamp(1.5rem, 4vw, 1.75rem);
+    grid-template-areas: 'user' 'work' 'play' 'study' 'exercise' 'social' 'self-care';
+}
+
+#user {
+    grid-area: user;
+}
+
+/* User Card */
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem 1.125rem;
+    background-color: var(--clr-blue);
+    border-radius: var(--radius);
+    padding: clamp(1rem, 6vw, 2rem) clamp(1rem, 6vw, 1.75rem);
+}
+
+#user__avatar {
+    width: 100%;
+    max-width: 72px;
+    border: 3px solid var(--clr-white);
+    border-radius: 50%;
+}
+
+#user-info > h1 {
+    font-size: clamp(0.75rem, 4.5vw, 1rem);
+    font-weight: 400;
+    color: var(--clr-pale-blue);
+}
+
+#user__name {
+    display: inline-block;
+    font-size: clamp(1.25rem, 6.5vw, 2.25rem);
+    font-weight: 300;
+    color: var(--clr-white);
+    margin-top: 0.25rem;
+}
+
+#tab {
+    display: flex;
+    justify-content: space-between;
+    row-gap: clamp(1rem, 6vw, 1.5rem);
+    padding: clamp(1rem, 6vw, 1.75rem) clamp(1rem, 6vw, 1.75rem);
+}
+
+/* Track Header Container */
+.track-hdr {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.track-hdr__title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--clr-white);
+}
+
+.track-hdr__btn {
+    display: inline-flex;
+    font-size: 1.5rem;
+    color: var(--clr-pale-blue)
+}
+
+.track-hdr__btn > .fa-xmark {
+    display: none;
+}
+
+.track-tab {
+    display: none;
+    flex-direction: column;
+    row-gap: 0.313rem;
+    position: absolute;
+    top: -10px;
+    right: 30px;
+    background-color: hsl(246, 80%, 60%, 0.5);
+    border-radius: var(--radius);
+    padding: 0.5rem;
+}
+
+.track-tab.open {
+    display: flex;
+}
+
+.track-tab__btn {
+    width: 100%;
+    text-align: start;
+    color: var(--clr-pale-blue);
+}
+
+/* Time Container */
+.time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 1rem;
+    margin-top: clamp(0.5rem, 2vw, 2rem);
+}
+
+.time__curr {
+    font-size: clamp(1.5rem, 6vw, 2.625rem);
+    font-weight: 300;
+    color: var(--clr-white);
+}
+
+.time__prev {
+    font-size: clamp(0.75rem, 3vw, 1rem);
+    color: var(--clr-pale-blue);
+}
+
+/* Work Card */
+#work {
+    background-color: var(--clr-red-work);
+    grid-area: work;
+}
+
+#work::before {
+    content: url('../images/icon-work.svg');
+}
+
+/* Play Card */
+#play {
+    background-color: var(--clr-blue-play);
+    grid-area: play;
+}
+
+#play::before {
+    content: url('../images/icon-play.svg');
+}
+
+/* Study Card */
+#study {
+    background-color: var(--clr-red-study);
+    grid-area: study;
+}
+
+#study::before {
+    content: url('../images/icon-study.svg');
+}
+
+/* Exercise Card */
+#exercise {
+    background-color: var(--clr-green-exercise);
+    grid-area: exercise;
+}
+
+#exercise::before {
+    content: url('../images/icon-exercise.svg');
+}
+
+/* Social Card */
+#social {
+    background-color: var(--clr-violet-social);
+    grid-area: social;
+}
+
+#social::before {
+    content: url('../images/icon-social.svg');
+}
+
+/* Self Care Card */
+#self-care {
+    background-color: var(--clr-orange-self-care);
+    grid-area: self-care;
+}
+
+#self-care::before {
+    content: url('../images/icon-self-care.svg');
+}
+
+/************************************************/
+/* Footer Container */
+.attribution {
+    font-size: clamp(0.75rem, 4vw, 1rem);
+    color: var(--clr-desaturated-blue);
+}
+
+.attribution > a {
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.9;
+    transition: color 200ms ease;
+}
+
+.attribution > a:hover,
+.attribution > a:focus-visible {
+    color: var(--clr-white);
+}
+
+/************************************************/
+/* Media Queries */
+@media (max-width: 290px) {
+    #tab {
+        flex-direction: column;
+    }
+
+    #user-info {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 1rem;
+    }
+}
+
+@media (min-width: 425px) {
+    #tab {
+        justify-content: space-evenly;
+    }
+}
+
+@media (min-width: 540px) {
+    #main-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 'user user' 'work play' 'study exercise' 'social self-care';
+    }
+
+    .time {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (min-width: 760px) {
+    #main-container {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: 'user work play' 'user study exercise' 'user social self-care';
+    }
+
+    #user-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #user__avatar {
+        max-width: 86px;
+    }
+
+    #tab {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (min-width: 1020px) {
+    #main-container {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: 'user work play study' 'user exercise social self-care';
+    }
 }
 
 /************************************************/

@@ -1,110 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frontend Mentor | Time tracking dashboard</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/index.js" async></script>
-</head>
-<body>
-
-  <main id="main-c">
-    <h1 class="sr-only">Time tracking dashboard</h1>
-    <div id="user-dash-c" class="hero-container">
-      <div id="user-c">
-        <img src="images/image-jeremy.png" alt="Jeremy Robson" id="user__img">
-        <p>
-          Report for
-          <strong id="user__name">Jeremy Robson</strong>
-        </p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Mentor | Time tracking dashboard</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/index.js" async></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <!-- Main Container -->
+    <main id="main-container">
+      <!-- User Card -->
+      <div id="user" class="hero-card">
+        <div id="user-info">
+          <img
+            src="images/image-jeremy.png"
+            alt="Jeremy Robson"
+            id="user__avatar"
+          />
+          <h1>
+            Report for <br />
+            <strong id="user__name">Jeremy Robson</strong>
+          </h1>
+        </div>
+        <div id="tab">
+          <button class="tab__btn" data-tab="Day">Daily</button>
+          <button class="tab__btn" data-tab="Week">Weekly</button>
+          <button class="tab__btn" data-tab="Month">Monthly</button>
+        </div>
       </div>
-      <div id="buttons-c">
-        <button class="btn__dash">Daily</button>
-        <button class="btn__dash">Weekly</button>
-        <button class="btn__dash">Monthly</button>
+      <!-- Work Card -->
+      <div id="work" class="hero-track">
+        <div class="track hero-card">
+          <section class="track-hdr">
+            <h2 class="track-hdr__title">Work</h2>
+            <button class="track-hdr__btn">
+              <i class="fa-solid fa-ellipsis"></i>
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="track-tab">
+              <button class="track-tab__btn" data-tab="Day">Daily</button>
+              <button class="track-tab__btn" data-tab="Week">Weekly</button>
+              <button class="track-tab__btn" data-tab="Month">Monthly</button>
+            </div>
+          </section>
+          <div class="time">
+            <p class="time__curr">5hrs</p>
+            <p class="time__prev">Last Day - 7hrs</p>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div id="track-work-c" class="track-c">
-      <section class="track-content-c">
-        <h2 class="tack__title">Work</h2>
-        5hrs <!-- daily -->
-        Previous - 7hrs <!-- daily -->
-        32hrs <!-- weekly -->
-        Previous - 36hrs <!-- weekly -->
-        103hrs <!-- monthly -->
-        Previous - 128hrs <!-- monthly -->
-      </section>
-    </div>
-
-    <div id="track-play-c" class="track-c">
-      <section class="track-content-c">
-        <h2 class="tack__title">Play</h2>
-        1hr <!-- daily -->
-        Previous - 2hrs <!-- daily -->
-        10hrs <!-- weekly -->
-        Previous - 8hrs <!-- weekly -->
-        23hrs <!-- monthly -->
-        Previous - 29hrs <!-- monthly -->
-      </section>
-    </div>
-
-    <div id="track-study-c" class="track-c">
-      <section class="track-content-c">
-        <h2 class="tack__title">Study</h2>
-        0hrs <!-- daily -->
-        Previous - 1hr <!-- daily -->
-        4hrs <!-- weekly -->
-        Previous - 7hrs <!-- weekly -->
-        13hrs <!-- monthly -->
-        Previous - 19hrs <!-- monthly -->
-      </section>
-    </div>
-
-    <div id="track-exercise-c" class="track-c">
-      <section class="track-content-c">
-        <h2 class="tack__title">Exercise</h2>
-        1hr <!-- daily -->
-        Previous - 1hr <!-- daily -->
-        4hrs <!-- weekly -->
-        Previous - 5hrs <!-- weekly -->
-        11hrs <!-- monthly -->
-        Previous - 18hrs <!-- monthly -->
-      </section>
-    </div>
-
-    <div id="track-social-c" class="track-c">
-      <section class="track-content-c">
-        <h2 class="tack__title">Social</h2>
-        1hr <!-- daily -->
-        Previous - 3hrs <!-- daily -->
-        5hrs <!-- weekly -->
-        Previous - 10hrs <!-- weekly -->
-        21hrs <!-- monthly -->
-        Previous - 23hrs <!-- monthly -->
-      </section>
-    </div>
-
-    <div id="track-self-care-c" class="track-c">
-      <section class="track-content-c">
-        <h2 class="tack__title">Self Care</h2>
-        0hrs <!-- daily -->
-        Previous - 1hr <!-- daily -->
-        2hrs <!-- weekly -->
-        Previous - 2hrs <!-- weekly -->
-        7hrs <!-- monthly -->
-        Previous - 11hrs <!-- monthly -->
-      </section>
-    </div>
-  </main>
-  
-  <footer>
-    <p class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-      Coded by <a href="https://github.com/LucasWeidas" target="_blank">Lucas Weidas</a>.
-    </p>
-  </footer>
-</body>
+      <!-- Play Card -->
+      <div id="play" class="hero-track">
+        <div class="track hero-card">
+          <section class="track-hdr">
+            <h2 class="track-hdr__title">Play</h2>
+            <button class="track-hdr__btn">
+              <i class="fa-solid fa-ellipsis"></i>
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="track-tab">
+              <button class="track-tab__btn" data-tab="Day">Daily</button>
+              <button class="track-tab__btn" data-tab="Week">Weekly</button>
+              <button class="track-tab__btn" data-tab="Month">Monthly</button>
+            </div>
+          </section>
+          <div class="time">
+            <p class="time__curr">1hr</p>
+            <p class="time__prev">Last Day - 2hrs</p>
+          </div>
+        </div>
+      </div>
+      <!-- Study Card -->
+      <div id="study" class="hero-track">
+        <div class="track hero-card">
+          <section class="track-hdr">
+            <h2 class="track-hdr__title">Study</h2>
+            <button class="track-hdr__btn">
+              <i class="fa-solid fa-ellipsis"></i>
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="track-tab">
+              <button class="track-tab__btn" data-tab="Day">Daily</button>
+              <button class="track-tab__btn" data-tab="Week">Weekly</button>
+              <button class="track-tab__btn" data-tab="Month">Monthly</button>
+            </div>
+          </section>
+          <div class="time">
+            <p class="time__curr">0hrs</p>
+            <p class="time__prev">Last Day - 1hr</p>
+          </div>
+        </div>
+      </div>
+      <!-- Exercise Card -->
+      <div id="exercise" class="hero-track">
+        <div class="track hero-card">
+          <section class="track-hdr">
+            <h2 class="track-hdr__title">Exercise</h2>
+            <button class="track-hdr__btn">
+              <i class="fa-solid fa-ellipsis"></i>
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="track-tab">
+              <button class="track-tab__btn" data-tab="Day">Daily</button>
+              <button class="track-tab__btn" data-tab="Week">Weekly</button>
+              <button class="track-tab__btn" data-tab="Month">Monthly</button>
+            </div>
+          </section>
+          <div class="time">
+            <p class="time__curr">1hr</p>
+            <p class="time__prev">Last Day - 1hr</p>
+          </div>
+        </div>
+      </div>
+      <!-- Social Card -->
+      <div id="social" class="hero-track">
+        <div class="track hero-card">
+          <section class="track-hdr">
+            <h2 class="track-hdr__title">Social</h2>
+            <button class="track-hdr__btn">
+              <i class="fa-solid fa-ellipsis"></i>
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="track-tab">
+              <button class="track-tab__btn" data-tab="Day">Daily</button>
+              <button class="track-tab__btn" data-tab="Week">Weekly</button>
+              <button class="track-tab__btn" data-tab="Month">Monthly</button>
+            </div>
+          </section>
+          <div class="time">
+            <p class="time__curr">1hr</p>
+            <p class="time__prev">Last Day - 3hrs</p>
+          </div>
+        </div>
+      </div>
+      <!-- Self Care Card -->
+      <div id="self-care" class="hero-track">
+        <div class="track hero-card">
+          <section class="track-hdr">
+            <h2 class="track-hdr__title">Self Care</h2>
+            <button class="track-hdr__btn">
+              <i class="fa-solid fa-ellipsis"></i>
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="track-tab">
+              <button class="track-tab__btn" data-tab="Day">Daily</button>
+              <button class="track-tab__btn" data-tab="Week">Weekly</button>
+              <button class="track-tab__btn" data-tab="Month">Monthly</button>
+            </div>
+          </section>
+          <div class="time">
+            <p class="time__curr">0hrs</p>
+            <p class="time__prev">Last Day - 1hr</p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer Container -->
+    <footer>
+      <p class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a href="https://github.com/LucasWeidas" target="_blank">Lucas Weidas</a
+        >.
+      </p>
+    </footer>
+  </body>
 </html>
