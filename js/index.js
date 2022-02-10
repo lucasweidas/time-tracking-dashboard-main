@@ -60,15 +60,22 @@
     }`;
   }
 
-  function addClass(element, name) {
+  // Adds the "active" class to the element
+  function addActive(element, name) {
     element.classList.add(name);
   }
 
-  function removeClass(element, name) {
+  // Removes the "active" class to the element
+  function removeActive(element, name) {
     element.classList.remove(name);
   }
 
-  // Variables
+  // Checks if the element contains the "active" class
+  function isActive(element, name) {
+    return element.classList.contains(name);
+  }
+
+  // Declarations of the Main Variables
   const tabBtns = document.querySelectorAll('.tab__btn');
   const hdrBtns = document.querySelectorAll('.track-hdr__btn');
   const menuBtns = document.querySelectorAll('.menu__btn');
@@ -79,19 +86,25 @@
       const time = button.innerText.toLowerCase();
       const tab = button.getAttribute('data-tab');
       getData(time, tab);
-      if (button.classList.contains('active')) return;
-      tabBtns.forEach(btn => removeClass(btn, 'active'));
-      addClass(button, 'active');
+      if (isActive(button, 'active')) return;
+      tabBtns.forEach(btn => removeActive(btn, 'active'));
+      addActive(button, 'active');
     });
   });
 
   // Track Header Buttons Event Listener
   hdrBtns.forEach(button => {
     button.addEventListener('click', () => {
-      if (button.classList.contains('active'))
-        return removeClass(button, 'active');
-      hdrBtns.forEach(btn => btn.classList.remove('active'));
-      addClass(button, 'active');
+      if (isActive(button, 'active')) {
+        removeActive(button, 'active');
+        button.ariaExpanded = 'false';
+        button.ariaLabel = 'Open Menu';
+        return;
+      }
+      hdrBtns.forEach(btn => removeActive(btn, 'active'));
+      addActive(button, 'active');
+      button.ariaExpanded = 'true';
+      button.ariaLabel = 'Close Menu';
     });
   });
 
