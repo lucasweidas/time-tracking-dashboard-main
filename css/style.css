@@ -44,7 +44,7 @@ body {
   min-height: 100vh;
   font-family: var(--font-default);
   background-color: var(--clr-very-dark-blue);
-  padding: 1.5rem;
+  padding: 5rem 1.5rem 1.5rem;
 }
 
 .hero-card {
@@ -141,10 +141,10 @@ button:focus-within {
   color: var(--clr-white);
 }
 
-/* Track Cards Icon */
+/* Cards Icon Container */
 .card-icon {
   width: 100%;
-  height: clamp(2.375rem, 7vw, 2.875rem);
+  height: clamp(2.375rem, 7vw, 3.125rem);
   border-radius: 10px 10px 0 0;
   position: relative;
   overflow: hidden;
@@ -188,6 +188,7 @@ button:focus-within {
   display: block;
 }
 
+/* Cards Menu Container */
 .menu {
   display: flex;
   flex-direction: column;
@@ -230,7 +231,7 @@ button:focus-within {
   color: var(--clr-menu-btn);
 }
 
-/* Time Container */
+/* Cards Time Container */
 .time {
   display: flex;
   justify-content: space-between;
@@ -370,6 +371,10 @@ button:focus-within {
 }
 
 @media (min-width: 760px) {
+  body {
+    padding: 1.5rem;
+  }
+
   #main-container {
     grid-template-areas: 'user work play' 'user study exercise' 'user social self-care';
   }

@@ -27,9 +27,9 @@
     // This for loop will set current and previous time data for all elements
     for (let i = 0; i < current.length; i++) {
       current[i].innerText = `${currData[i]}hr${currData[i] === 1 ? '' : 's'}`;
-      previous[i].innerText = `Last ${tab} - ${prevData[i]}hr${
-        prevData[i] === 1 ? '' : 's'
-      }`;
+      previous[i].innerText = `${
+        tab !== 'Day' ? `Last ${tab}` : 'Yesterday'
+      } - ${prevData[i]}hr${prevData[i] === 1 ? '' : 's'}`;
     }
   }
 
@@ -55,9 +55,9 @@
 
     // Set the current and previous time data only for the "element" children
     current.innerText = `${currData}hr${currData === 1 ? '' : 's'}`;
-    previous.innerText = `Last ${tab} - ${prevData}hr${
-      prevData === 1 ? '' : 's'
-    }`;
+    previous.innerText = `${
+      tab !== 'Day' ? `Last ${tab}` : 'Yesterday'
+    } - ${prevData}hr${prevData === 1 ? '' : 's'}`;
   }
 
   // Adds the "active" class to the element
