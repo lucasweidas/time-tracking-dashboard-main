@@ -24,11 +24,9 @@
   --clr-pale-blue: hsl(236, 100%, 87%);
   --clr-white: hsl(0, 0%, 100%);
   --clr-card-hove: hsl(236, 41%, 34%);
-  --clr-menu-btn: hsl(236, 100%, 95%);
   --clr-menu-bg: hsl(246, 80%, 60%, 0.9);
 
   --font-default: 'Rubik', sans-serif;
-  --font-size-cards: 18px;
 
   --radius: 10px;
 }
@@ -158,6 +156,7 @@ button:focus-within {
 .track-hdr__btn {
   width: 21px;
   display: inline-flex;
+  justify-content: center;
   font-size: 1.5rem;
   color: var(--clr-pale-blue);
   position: relative;
@@ -183,20 +182,27 @@ button:focus-within {
 .track-hdr__btn.active::before {
   visibility: visible;
   opacity: 1;
-  pointer-events: auto;
+}
+
+.track-hdr__btn > .fa-solid {
+  transition: transform 200ms ease;
 }
 
 .track-hdr__btn > .fa-xmark {
-  display: none;
+  font-size: 0px;
   color: var(--clr-white);
 }
 
+.track-hdr__btn.active > .fa-solid {
+  transform: rotate(90deg);
+}
+
 .track-hdr__btn.active > .fa-ellipsis {
-  display: none;
+  font-size: 0px;
 }
 
 .track-hdr__btn.active > .fa-xmark {
-  display: block;
+  font-size: inherit;
 }
 
 /* Cards Menu Container */
@@ -216,19 +222,6 @@ button:focus-within {
   transition: opacity 200ms ease;
 }
 
-/* .menu::before {
-  content: '';
-  position: absolute;
-  display: block;
-  width: 0px;
-  border-style: solid;
-  border-color: transparent var(--clr-menu-bg);
-  border-width: 8px 0 8px 8px;
-  bottom: 10px;
-  right: -8px;
-  margin-top: -8px;
-} */
-
 .track-hdr__btn.active ~ .menu {
   visibility: visible;
   opacity: 1;
@@ -239,7 +232,7 @@ button:focus-within {
   font-size: 1rem;
   width: 100%;
   text-align: start;
-  color: var(--clr-menu-btn);
+  color: var(--clr-pale-blue);
 }
 
 /* Cards Time Container */
