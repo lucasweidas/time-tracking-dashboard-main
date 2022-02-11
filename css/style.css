@@ -150,15 +150,40 @@ button:focus-within {
 }
 
 .track-hdr__title {
-  font-size: 1rem;
+  font-size: clamp(1rem, 4vw, 1.125rem);
   font-weight: 500;
   color: var(--clr-white);
 }
 
 .track-hdr__btn {
+  width: 21px;
   display: inline-flex;
   font-size: 1.5rem;
   color: var(--clr-pale-blue);
+  position: relative;
+}
+
+.track-hdr__btn::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0px;
+  border-style: solid;
+  border-color: transparent var(--clr-menu-bg);
+  border-width: 8px 0 8px 8px;
+  top: 50%;
+  left: -9px;
+  margin-top: -8px;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.track-hdr__btn.active::before {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .track-hdr__btn > .fa-xmark {
@@ -191,7 +216,7 @@ button:focus-within {
   transition: opacity 200ms ease;
 }
 
-.menu::before {
+/* .menu::before {
   content: '';
   position: absolute;
   display: block;
@@ -202,7 +227,7 @@ button:focus-within {
   bottom: 10px;
   right: -8px;
   margin-top: -8px;
-}
+} */
 
 .track-hdr__btn.active ~ .menu {
   visibility: visible;

@@ -38,7 +38,6 @@
 
   // Will set the current and previous time data to a SINGLE Card
   function setSingleTimeFrame(data, infos) {
-    // time, tab, element
     const title = infos.timeBox.getAttribute('data-title');
     const current = infos.timeBox.querySelector('.time__curr');
     const previous = infos.timeBox.querySelector('.time__prev');
