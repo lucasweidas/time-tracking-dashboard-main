@@ -1,13 +1,16 @@
 (() => {
   // Will get the data from JSON file
-  getData('weekly', 'week');
-  function getData(time, tab, element = null) {
+  getData({time: 'weekly', tab: 'week'});
+  function getData(infos) {
     const resquest = new XMLHttpRequest();
     resquest.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         const response = resquest.response;
-        if (element === null) return setAllTimeFrames(response, time, tab);
-        setSingleTimeFrame(response, time, tab, element);
+        // If info.timeBox "Truthy", execute setSingleTimeFrame function
+        if (infos.timeBox) return setSingleTimeFrame(response, infos);
+
+        // If info.timeBox "Falsy" (undefined), execute setAllTimeFrames function
+        setAllTimeFrames(response, infos);
       }
     };
     resquest.open('GET', 'data.json');
@@ -16,11 +19,11 @@
   }
 
   // Will set the current and previous time data to ALL Cards
-  function setAllTimeFrames(data, time, tab) {
+  function setAllTimeFrames(data, infos) {
     // Return an array with all current time data
-    const currData = data.map(value => value.timeframes[time].current);
+    const currData = data.map(value => value.timeframes[infos.time].current);
     // Return an array with all previous time data
-    const prevData = data.map(value => value.timeframes[time].previous);
+    const prevData = data.map(value => value.timeframes[infos.time].previous);
     const current = document.querySelectorAll('.time__curr');
     const previous = document.querySelectorAll('.time__prev');
 
@@ -28,27 +31,28 @@
     for (let i = 0; i < current.length; i++) {
       current[i].innerText = `${currData[i]}hr${currData[i] === 1 ? '' : 's'}`;
       previous[i].innerText = `${
-        tab !== 'Day' ? `Last ${tab}` : 'Yesterday'
+        infos.tab !== 'Day' ? `Last ${infos.tab}` : 'Yesterday'
       } - ${prevData[i]}hr${prevData[i] === 1 ? '' : 's'}`;
     }
   }
 
   // Will set the current and previous time data to a SINGLE Card
-  function setSingleTimeFrame(data, time, tab, element) {
-    const title = element.getAttribute('data-title');
-    const current = element.querySelector('.time__curr');
-    const previous = element.querySelector('.time__prev');
+  function setSingleTimeFrame(data, infos) {
+    // time, tab, element
+    const title = infos.timeBox.getAttribute('data-title');
+    const current = infos.timeBox.querySelector('.time__curr');
+    const previous = infos.timeBox.querySelector('.time__prev');
     // Return a single number with the current time data from a certain "title"
     const currData = data.reduce((res, value) => {
       if (value.title === title) {
-        res = value.timeframes[time].current;
+        res = value.timeframes[infos.time].current;
       }
       return res;
     }, 0);
     // Return a single number with the previous time data from a certain "title"
     const prevData = data.reduce((res, value) => {
       if (value.title === title) {
-        res = value.timeframes[time].previous;
+        res = value.timeframes[infos.time].previous;
       }
       return res;
     }, 0);
@@ -56,7 +60,7 @@
     // Set the current and previous time data only for the "element" children
     current.innerText = `${currData}hr${currData === 1 ? '' : 's'}`;
     previous.innerText = `${
-      tab !== 'Day' ? `Last ${tab}` : 'Yesterday'
+      infos.tab !== 'Day' ? `Last ${infos.tab}` : 'Yesterday'
     } - ${prevData}hr${prevData === 1 ? '' : 's'}`;
   }
 
@@ -83,9 +87,10 @@
   // Tab Buttons Event Listener
   tabBtns.forEach(button => {
     button.addEventListener('click', () => {
-      const time = button.innerText.toLowerCase();
-      const tab = button.getAttribute('data-tab');
-      getData(time, tab);
+      const infos = {};
+      infos.time = button.innerText.toLowerCase();
+      infos.tab = button.getAttribute('data-tab');
+      getData(infos);
       if (isActive(button, 'active')) return;
       tabBtns.forEach(btn => removeActive(btn, 'active'));
       addActive(button, 'active');
@@ -111,10 +116,11 @@
   // Track Menu Buttons Event Listener
   menuBtns.forEach(button => {
     button.addEventListener('click', () => {
-      const time = button.innerText.toLowerCase();
-      const tab = button.getAttribute('data-tab');
-      const timeDiv = button.parentElement.parentElement.nextElementSibling;
-      getData(time, tab, timeDiv);
+      const infos = {};
+      infos.time = button.innerText.toLowerCase();
+      infos.tab = button.getAttribute('data-tab');
+      infos.timeBox = button.parentElement.parentElement.nextElementSibling;
+      getData(infos);
     });
   });
 })();

@@ -68,9 +68,10 @@ button:focus-within {
 }
 
 .hero-track {
-  display: grid;
+  background: top -10px right 15px / auto no-repeat;
   border-radius: var(--radius) var(--radius) calc(var(--radius) + 5px)
     calc(var(--radius) + 5px);
+  padding-top: clamp(2.375rem, 7vw, 2.875rem);
 }
 
 .hero-track > .hero-card {
@@ -139,21 +140,6 @@ button:focus-within {
 
 .tab__btn.active {
   color: var(--clr-white);
-}
-
-/* Cards Icon Container */
-.card-icon {
-  width: 100%;
-  height: clamp(2.375rem, 7vw, 3.125rem);
-  border-radius: 10px 10px 0 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.card-icon::before {
-  position: absolute;
-  top: -10px;
-  right: 15px;
 }
 
 /* Track Header Container */
@@ -254,63 +240,45 @@ button:focus-within {
 
 /* Work Card */
 #work {
+  background-image: url('../images/icon-work.svg');
   background-color: var(--clr-red-work);
   grid-area: work;
 }
 
-#work .card-icon::before {
-  content: url('../images/icon-work.svg');
-}
-
 /* Play Card */
 #play {
+  background-image: url('../images/icon-play.svg');
   background-color: var(--clr-blue-play);
   grid-area: play;
 }
 
-#play .card-icon::before {
-  content: url('../images/icon-play.svg');
-}
-
 /* Study Card */
 #study {
+  background-image: url('../images/icon-study.svg');
   background-color: var(--clr-red-study);
   grid-area: study;
 }
 
-#study .card-icon::before {
-  content: url('../images/icon-study.svg');
-}
-
 /* Exercise Card */
 #exercise {
+  background-image: url('../images/icon-exercise.svg');
+  background-position: top 0 right 15px;
   background-color: var(--clr-green-exercise);
   grid-area: exercise;
 }
 
-#exercise .card-icon::before {
-  content: url('../images/icon-exercise.svg');
-  top: 0;
-}
-
 /* Social Card */
 #social {
+  background-image: url('../images/icon-social.svg');
   background-color: var(--clr-violet-social);
   grid-area: social;
 }
 
-#social .card-icon::before {
-  content: url('../images/icon-social.svg');
-}
-
 /* Self Care Card */
 #self-care {
+  background-image: url('../images/icon-self-care.svg');
   background-color: var(--clr-orange-self-care);
   grid-area: self-care;
-}
-
-#self-care .card-icon::before {
-  content: url('../images/icon-self-care.svg');
 }
 
 /************************************************/
