@@ -20,8 +20,8 @@ This is a solution to the [Time tracking dashboard challenge on Frontend Mentor]
 
 ### Links
 
-- Solution URL: [github.com/lucasweidas/](https://github.com/lucasweidas/)
-- Live Site URL: [lucasweidas.github.io//](https://lucasweidas.github.io//)
+- Solution URL: [github.com/lucasweidas/time-tracking-dashboard-main](https://github.com/lucasweidas/time-tracking-dashboard-main)
+- Live Site URL: [lucasweidas.github.io/time-tracking-dashboard-main/](https://lucasweidas.github.io/time-tracking-dashboard-main/)
 
 ## My process
 
